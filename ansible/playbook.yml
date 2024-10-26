@@ -36,6 +36,14 @@
         ports:
          - "5000:5000"
 
+    - name: running front end now
+      docker_container: 
+      name: yolo-front-end
+      image: jorashid/yolo-frontend:v1.0.6
+      ports:
+       - "3000:3000"
+      detach: true
+      state: started
     
     # - name: Copying the client to the working directory
     #   copy:

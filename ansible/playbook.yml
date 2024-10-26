@@ -1,0 +1,8 @@
+---
+- name: connection of ansible with vagrant os
+  hosts: vagrant
+  become: yes
+  tasks: 
+    - name: try connection
+      apt:
+        update-cache: yes

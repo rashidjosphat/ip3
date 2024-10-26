@@ -1,8 +1,70 @@
 ---
-- name: connection of ansible with vagrant os
+- name: Connection of Ansible with Vagrant OS
   hosts: vagrant
   become: yes
-  tasks: 
-    - name: try connection
+  tasks:
+
+    - name: Install Docker
       apt:
-        update-cache: yes
+        name:
+          - docker.io
+        state: present
+
+    - name: Create a working directory
+      file:
+        path: /home/ansible/yolo
+        state: directory  # Correct usage
+        owner: euser
+        mode: '0775'      # Quoted mode
+
+    - name: Pull jorashid/yolo-frontend and jorashid/yolo-backend images
+      docker_image:
+        name: jorashid/yolo-frontend:v1.0.6
+        source: pull
+
+    - name: pulling jorashid/yolo-backend 
+      docker_image:
+        name: jorashid/yolo-backend:v1.0.0
+        source: pull
+
+    - name: running backend container
+      docker_container:
+        name: backend-container
+        image: jorashid/yolo-backend:v1.0.0
+        state: started
+        detach: true
+        ports:
+         - "5000:5000"
+    # - name: Copying the client to the working directory
+    #   copy:
+    #     src: /home/kali/devops/ip3/yolo/client
+    #     dest: /home/ansible/yolo
+
+    # - name: Copying the backend to the working directory
+    #   copy:
+    #     src: /home/kali/devops/ip3/yolo/backend
+    #     dest: /home/ansible/yolo
+
+    # - name: Install dependencies in the frontend
+    #   command: npm install
+    #   args:
+    #     chdir: /home/ansible/yolo/client/
+
+    # - name: Install dependencies in the backend
+    #   command: npm install
+    #   args:
+    #     chdir: /home/ansible/yolo/backend
+
+    # - name: Run the backend application
+    #   command: node server.js
+    #   args:
+    #     chdir: /home/ansible/yolo/backend
+    #   async: 600
+    #   poll: 0
+
+    # - name: Run the frontend application
+    #   command: npm start
+    #   args:
+    #     chdir: /home/ansible/yolo/client
+    #   async: 600
+    #   poll: 0

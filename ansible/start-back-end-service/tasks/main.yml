@@ -1,0 +1,15 @@
+---
+# tasks file for start-back-end-service
+- name: installing the jorashid/yolo-backend:v1.0.0 image
+  docker_image:
+    name: jorashid/yolo-backend:v1.0.0
+    source: pull
+    
+- name: running the back end service
+  docker_container:
+    name: yoloBackEndService
+    image: jorashid/yolo-backend:v1.0.0
+    ports:
+     - "5000:5000"
+    detach: true
+    state: started

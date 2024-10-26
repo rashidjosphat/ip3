@@ -35,6 +35,8 @@
         detach: true
         ports:
          - "5000:5000"
+
+    
     # - name: Copying the client to the working directory
     #   copy:
     #     src: /home/kali/devops/ip3/yolo/client

@@ -11,8 +11,8 @@ let mongodb_url = 'mongodb://localhost/';
 let dbName = 'yolomy';
 
 // define a url to connect to the database
-const MONGODB_URI = process.env.MONGODB_URI || mongodb_url + dbName
-mongoose.connect(MONGODB_URI,{useNewUrlParser: true, useUnifiedTopology: true  } )
+const MONGODB_URI = process.env.MONGODB_URI || 'mongodb+srv://james_rashid:james_rashid@cluster0.bwtll.mongodb.net/yolomy?retryWrites=true&w=majority&appName=Cluster0'
+mongoose.connect(MONGODB_URI)
 let db = mongoose.connection;
 
 // Check Connection

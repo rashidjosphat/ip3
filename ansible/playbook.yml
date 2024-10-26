@@ -12,6 +12,18 @@
   roles:
     - start-back-end-service
     - start-front-end-service
+  # tasks:
+  #   - name: Wait for backend service to be available
+  #     wait_for:
+  #       port: 5000  # Adjust this to your backend service port
+  #       delay: 10   # Time to wait before checking
+  #       timeout: 300  # Total time to wait for the service to be available
+  #       state: started
+
+  #   - name: Running front end now
+  #     include_role:
+  #       name: start-front-end-service
+
     # - name: Create a working directory
     #   file:
     #     path: /home/ansible/yolo

@@ -5,9 +5,9 @@
     name: jorashid/yolo-frontend:v1.0.6
     source: pull
     
-- name: running the back end service
+- name: running the front end service
   docker_container:
-    name: yoloBackEndService
+    name: yoloFrontEndService
     image: jorashid/yolo-frontend:v1.0.6
     ports:
      - "3000:3000"

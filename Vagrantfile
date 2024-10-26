@@ -15,6 +15,7 @@ Vagrant.configure("2") do |config|
   config.vm.box = "geerlingguy/ubuntu2004"
   config.vm.provider "virtualbox" do |vb|
     vb.memory = "400"
+    vb.cpus = 1
   end
   # Disable automatic box update checking. If you disable this, then
   # boxes will only be checked for updates when the user runs

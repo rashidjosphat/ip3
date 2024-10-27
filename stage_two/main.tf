@@ -9,9 +9,14 @@ terraform {
 
 resource "vagrant_vm" "alpine_vm" {
  
-  vagrantfile_dir = "../"  # Pointing to the parent directory where the Vagrantfile is located
+  vagrantfile_dir = "../"  
+
+  provisioner "local-exec" {
+    command = "ansible-playbook -i ../ansible/inventory ../ansible/playbook.yml --ask-become-pass"
+  }
+
   env = {
-    KEY = "value"  # Replace with your desired environment variables if needed
+    KEY = "value"  
   }
   get_ports = true
 }

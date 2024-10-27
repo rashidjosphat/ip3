@@ -8,16 +8,18 @@ terraform {
 }
 
 resource "vagrant_vm" "alpine_vm" {
- 
-  vagrantfile_dir = "../"  
+  vagrantfile_dir = "../"  # Adjust as necessary
 
   provisioner "local-exec" {
-    command = "ansible-playbook -i ../ansible/inventory ../ansible/playbook.yml --ask-become-pass"
+    command = <<EOT
+      ANSIBLE_BECOME_PASS=${var.become_password} ansible-playbook ../ansible/playbook.yml
+    EOT
   }
 
   env = {
-    KEY = "value"  
+    KEY = "value"  # Replace with your desired environment variables if needed
   }
+
   get_ports = true
 }
 

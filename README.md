@@ -4,10 +4,12 @@
 Yolo E-commerce Orchestration is an application designed to add products and display them, allowing users to place orders. My main role in this project was to orchestrate the deployment using Vagrant and Ansible.
 
 ## Installation Instructions
-### Installing Prerequesite Application
-Install [Vagrant](https://www.vagrantup.com/downloads) , [VirtualBox](https://www.virtualbox.org/wiki/Downloads) and [ansible](https://github.com/ansible/ansible/releases)
+## Installing Prerequesite Application
+Install [Vagrant](https://www.vagrantup.com/downloads) , [VirtualBox](https://www.virtualbox.org/wiki/Downloads) ,[ansible](https://github.com/ansible/ansible/releases) and [terraform](https://developer.hashicorp.com/terraform/install)
 
-### Running The Application
+## Running The Application
+   there are two ways to run this application use terraform or without terraform
+## OPTION 1 -  without terraform
 1. Clone the repository:
    ```bash
    git clone https://github.com/rashidjosphat/ip3/
@@ -27,11 +29,25 @@ Install [Vagrant](https://www.vagrantup.com/downloads) , [VirtualBox](https://ww
    ansible-playbook ./ansible/playbook.yml --ask-became-pass
    ```
 if it promt you a password put ![pass](password)
+## OPTION 2 - using terraform
+ to run this application with terraform you simply branch to the stage_two branch and cd into the stage_two directory.
+ in the stage_two directory run
+ ```bash
+    terraform init
+    terraform plan
+    terraform appy
+ ```
+the terraform init is supporced to download the provider, the terraform plan command plan and show you what changes you
+are making and the last terraform apply initiate the changes.
+
+The terraform file is coded in  way that it provision the same os in option one and it and it also run the ansible file ,
+so no need for any other command it come packed with all configuration.
 ## Usage Instraction
 go to you browser and run
 ```bash
 http://localhost:3000
 ```
+# You Can Also use terraform
 Features
 
     Dockerized backend and frontend services.

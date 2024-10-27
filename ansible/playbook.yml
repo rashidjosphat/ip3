@@ -2,20 +2,11 @@
 - name: Connection of Ansible with Vagrant OS
   hosts: vagrant
   become: yes
-  tasks:
+  
 
-    - name: Install Docker
-      apt:
-        name:
-          - docker.io
-        state: present
-
-    - name: Clone application code from GitHub
-      git:
-        repo: 'https://github.com/Vinge1718/yolo.git'  
-        dest: /home/ansible/yolo
-        version: master 
+    
   roles:
+    - updatingAndInstallingDocker
     - start-back-end-service
     - start-front-end-service
   # tasks:

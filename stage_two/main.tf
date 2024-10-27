@@ -10,17 +10,21 @@ terraform {
 resource "vagrant_vm" "alpine_vm" {
   vagrantfile_dir = "../"  # Adjust as necessary
 
+  get_ports = true
+}
+
+resource "null_resource" "ansible_provision" {
+  depends_on = [vagrant_vm.alpine_vm]
+
   provisioner "local-exec" {
     command = <<EOT
-      ANSIBLE_BECOME_PASS=${var.become_password} ansible-playbook ../ansible/playbook.yml
+      ANSIBLE_BECOME_PASS=${var.become_password} ansible-playbook -i ../ansible/inventory.ini ../ansible/playbook.yml
     EOT
   }
 
-  env = {
-    KEY = "value"  # Replace with your desired environment variables if needed
+  triggers = {
+    always_run = timestamp()  # This ensures the provisioner runs every time
   }
-
-  get_ports = true
 }
 
 output "machine_names" {

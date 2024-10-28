@@ -33,12 +33,11 @@ if it promt you a password put ![pass](password)
  to run this application with terraform you simply branch to the stage_two branch and cd into the stage_two directory.
  in the stage_two directory run
  ```bash
-    terraform init
-    terraform plan
-    terraform appy
+    terraform plan -out=tfplan && terraform apply -auto-approve tfplan
+
  ```
-the terraform init is supporsed to download the provider, the terraform plan command plan and show you what changes you
-are making and the last terraform apply initiate the changes.
+the command is supporsed to initiate by downloading the stated providers in the terraform main.tf file and run the 
+application automatically.
 
 The terraform file is coded in  way that it provision the same os in option one and it and it also run the ansible file ,
 so no need for any other command it come packed with all configuration.

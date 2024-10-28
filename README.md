@@ -37,7 +37,7 @@ if it promt you a password put ![pass](password)
     terraform plan
     terraform appy
  ```
-the terraform init is supporced to download the provider, the terraform plan command plan and show you what changes you
+the terraform init is supporsed to download the provider, the terraform plan command plan and show you what changes you
 are making and the last terraform apply initiate the changes.
 
 The terraform file is coded in  way that it provision the same os in option one and it and it also run the ansible file ,
@@ -47,12 +47,6 @@ go to you browser and run
 ```bash
 http://localhost:3000
 ```
-# You Can Also use terraform
-Features
-
-    Dockerized backend and frontend services.
-    Automated deployment using Ansible and Vagrant.
-    Easily configurable networking and resource allocation.
 
 ## Contribution Guidelines
 

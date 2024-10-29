@@ -2,14 +2,15 @@
 - name: Connection of Ansible with Vagrant OS
   hosts: vagrant
   become: yes
-  tasks:
+  # tasks:
 
-    - name: Install Docker
-      apt:
-        name:
-          - docker.io
-        state: present
+  #   - name: Install Docker
+  #     apt:
+  #       name:
+  #         - docker.io
+  #       state: present
   roles:
+    - updatingAndInstallinDocker
     - start-back-end-service
     - start-front-end-service
   # tasks:

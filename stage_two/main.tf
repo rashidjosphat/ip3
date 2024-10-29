@@ -8,7 +8,7 @@ terraform {
 }
 
 resource "vagrant_vm" "alpine_vm" {
-  vagrantfile_dir = "../"  # Adjust as necessary
+  vagrantfile_dir = "../"  
 
   get_ports = true
 }
